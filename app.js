@@ -1,5 +1,4 @@
 const http = require('http');
-const port = 3000;
 
 const express = require('express');
 const session = require('express-session');
@@ -26,7 +25,7 @@ app.use(session({
   resave: false
 }));
 
-http.createServer(app).listen(port);
+http.createServer(app).listen(process.env.PORT);
 
 app.get('/shopItems', (req, res) => {
   const sess = req.session;
