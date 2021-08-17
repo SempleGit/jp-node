@@ -1,0 +1,25 @@
+{
+  "name": "jp-node",
+  "version": "1.0.0",
+  "description": "Jurassic Park Node backend",
+  "main": "app.js",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Daniel Semple",
+  "license": "ISC",
+  "node": "14.17.3",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.2"
+  }
+}
