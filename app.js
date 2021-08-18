@@ -10,25 +10,9 @@ global.shopItems = require('./shopItems')();
 const cart = require('./cart');
 const characters = require('./characters');
 
-
 const cors = require('cors');
-// add this code
-const whitelist = ['https://warm-reaches-88811.herokuapp.com/, https://semplegit.github.io/angular-jurassic-park/']; // list of allow domain
-
-const corsOptions = {
-    origin: function (origin, callback) {
-        if (!origin) {
-            return callback(null, true);
-        }
-
-        if (whitelist.indexOf(origin) === -1) {
-            var msg = 'The CORS policy for this site does not ' +
-                'allow access from the specified Origin.';
-            return callback(new Error(msg), false);
-        }
-        return callback(null, true);
-    }
-}
+const whitelist = ['https://semplegit.github.io/angular-jurassic-park/']; // list of allow domain
+app.use(cors());
 
 // For parsing application/json
 app.use(express.json());
