@@ -36,6 +36,7 @@ app.get('/shopItems', (req, res) => {
   if (!sess.user) {
     sess.user = 'Random User';
   }
+  console.log(req.session);
   res.json(shopItems);
 });
 
