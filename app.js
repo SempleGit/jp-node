@@ -23,7 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({
   // store: new RedisStore({ client: redisClient }),
   secret: 'session secret',
-  cookie: { maxAge: 1000 * 60 * 10 }, // Final number is how many minutes the session stays open, 10 is 10 minutes.
+  cookie: { httpOnly: true,
+    secure: true, 
+    sameSite: 'none',
+    maxAge: 1000 * 60 * 10 }, // Final number is how many minutes the session stays open, 10 is 10 minutes.
   saveUninitialized: true,
   resave: false
 }));
