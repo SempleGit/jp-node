@@ -2,17 +2,16 @@ const http = require('http');
 
 const express = require('express');
 const session = require('express-session');
-// const redis = require('redis')
-// let RedisStore = require('connect-redis')(session)
-// let redisClient = redis.createClient()
+// const redis = require('redis');
+// const redisClient = redis.createClient(process.env.REDIS_URL);
 const app = express();
 global.shopItems = require('./shopItems')();
 const cart = require('./cart');
 const characters = require('./characters');
 
 const cors = require('cors');
-const whitelist = ['https://semplegit.github.io/angular-jurassic-park/']; // list of allow domain
 app.use(cors());
+app.set('trust proxy', true);
 
 // For parsing application/json
 app.use(express.json());
