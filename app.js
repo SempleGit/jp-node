@@ -32,6 +32,7 @@ app.use(session({
   resave: false
 }));
 
+redisClient.on('error', console.log)
 http.createServer(app).listen(process.env.PORT);
 
 app.get('/shopItems', (req, res) => {
