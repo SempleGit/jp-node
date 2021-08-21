@@ -3,8 +3,8 @@ const http = require('http');
 const express = require('express');
 const session = require('express-session');
 const redis = require('redis');
-const redisClient = redis.createClient(process.env.REDIS_URL);
 let RedisStore = require('connect-redis')(session);
+let redisClient = redis.createClient(process.env.REDIS_URL);
 const app = express();
 global.shopItems = require('./shopItems')();
 const cart = require('./cart');
@@ -12,7 +12,7 @@ const characters = require('./characters');
 
 const cors = require('cors');
 app.use(cors());
-app.set('trust proxy', true);
+// app.set('trust proxy', true);
 
 // For parsing application/json
 app.use(express.json());
@@ -28,7 +28,7 @@ app.use(session({
     secure: true, 
     sameSite: 'none',
     maxAge: 1000 * 60 * 10 }, // Final number is how many minutes the session stays open, 10 is 10 minutes.
-  saveUninitialized: true,
+  saveUninitialized: false,
   resave: false
 }));
 
