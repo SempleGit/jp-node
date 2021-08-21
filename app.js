@@ -2,8 +2,9 @@ const http = require('http');
 
 const express = require('express');
 const session = require('express-session');
-// const redis = require('redis');
-// const redisClient = redis.createClient(process.env.REDIS_URL);
+const redis = require('redis');
+const redisClient = redis.createClient(process.env.REDIS_URL);
+let RedisStore = require('connect-redis')(session);
 const app = express();
 global.shopItems = require('./shopItems')();
 const cart = require('./cart');
@@ -21,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //setting up the session
 app.use(session({
-  // store: new RedisStore({ client: redisClient }),
+  store: new RedisStore({ client: redisClient }),
   secret: 'session secret',
   cookie: { httpOnly: true,
     secure: true, 
