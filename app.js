@@ -40,6 +40,7 @@ app.get('/shopItems', (req, res) => {
     sess.user = 'Random User';
   }
   console.log(req.session);
+  req.session.save();
   res.json(shopItems);
 });
 
